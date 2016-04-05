@@ -1,15 +1,16 @@
-# docker-murmur
+# docker-openvpn
 
-Murmur is the server component for Mumble
-
-* just two commands to have a working mumbleserver
+* build & run
 
 ```
-docker pull remijouannet/docker-murmur
-docker run -d -p 55445:55445 -e BANDWITH=72000 -e PASSWORD=password54125 -e PORT=55445 remijouannet/docker-murmur
+./docker.sh build
+./docker.sh run
 ```
 
-* and juste connect to the server
+* you can test the connection with the following command
 
-![login](https://raw.githubusercontent.com/remijouannet/docker-murmur/master/mumble_login.PNG)
+```
+sudo openvpn --remote 172.17.0.2 --comp-lzo --dev tun --auth-user-pass --ca server.crt --client 
+
+```
 
