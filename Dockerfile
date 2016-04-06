@@ -19,4 +19,6 @@ RUN chmod 600 -R /app/keys
 RUN chmod u+x /app/run.sh
 RUN chmod u+x /app/keys/gen.sh
 
+EXPOSE 1294/udp
+
 CMD ["/app/run.sh"]
