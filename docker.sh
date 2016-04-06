@@ -16,7 +16,7 @@ function run_ {
         --cap-add=NET_ADMIN \
         --device='/dev/net/tun' \
         --name $APP \
-        -p 1194:1194 \
+        -p 1294:1294 \
         -i -t $APP
 }
 
@@ -34,6 +34,7 @@ function bash_ {
 
 function stop_ {
     docker stop $APP;
+    docker rm $(docker ps -a | grep $APP | cut -d' ' -f1);
 }
 
 help="build : build or rebuild the DockerFile\n
