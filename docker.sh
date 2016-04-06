@@ -1,6 +1,8 @@
 #!/bin/sh
 
 APP="openvpn";
+PASSWD=$2;
+
 
 build_() {
     git checkout master
@@ -11,11 +13,12 @@ build_() {
 run_() {
     docker stop $(docker ps -a | grep $APP | cut -d' ' -f1);
     docker rm $(docker ps -a | grep $APP | cut -d' ' -f1);
-
+    echo $PASSWD;
     docker run \
         --cap-add=NET_ADMIN \
         --device='/dev/net/tun' \
         --name $APP \
+        -e PASSWD=$PASSWD \
         -p 1294:1294/udp \
         -i -t $APP
 }
