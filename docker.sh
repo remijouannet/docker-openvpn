@@ -16,7 +16,7 @@ run_() {
         --cap-add=NET_ADMIN \
         --device='/dev/net/tun' \
         --name $APP \
-        -p 1294:1294 \
+        -p 1294:1294/udp \
         -i -t $APP
 }
 
