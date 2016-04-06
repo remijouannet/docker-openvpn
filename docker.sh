@@ -2,13 +2,13 @@
 
 APP="openvpn";
 
-function build_ {
+build_() {
     git checkout master
     git pull
     docker build -t $APP .
 }
 
-function run_ {
+run_() {
     docker stop $(docker ps -a | grep $APP | cut -d' ' -f1);
     docker rm $(docker ps -a | grep $APP | cut -d' ' -f1);
 
@@ -20,19 +20,19 @@ function run_ {
         -i -t $APP
 }
 
-function restart_ {
+restart_() {
     docker restart $APP;
 }
 
-function logs_ {
+logs_() {
     docker logs -f $APP;
 }
 
-function bash_ {
+bash_() {
     docker exec -it $APP sh;
 }
 
-function stop_ {
+stop_() {
     docker stop $APP;
     docker rm $(docker ps -a | grep $APP | cut -d' ' -f1);
 }
