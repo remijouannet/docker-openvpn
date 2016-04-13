@@ -5,7 +5,7 @@ cd /app/keys
 
 chmod 600 -R /app/keys
 
-echo client:$PASSWD | chpasswd
+[ -n "$PASSWD" ] && echo client:$PASSWD | chpasswd
 
 iptables -t nat -A POSTROUTING -s 10.10.0.0/24 -o eth0 -j MASQUERADE
 
