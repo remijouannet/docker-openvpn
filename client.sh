@@ -6,6 +6,8 @@ client
 nobind
 dev tun
 auth-user-pass
+comp-lzo
+
 
 <key>
 `cat keys/client.key`
